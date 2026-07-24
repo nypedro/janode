@@ -631,8 +631,8 @@ export class VideoRoomHandle extends Handle {
           if (typeof message_data.moderation !== 'undefined') {
             janode_event.event = PLUGIN_EVENT.MODERATED;
             janode_event.data.feed = message_data.id;
-            janode_event.data.mid = message_data.mid
-            janode_event.data.moderation = message_data.moderation
+            janode_event.data.mid = message_data.mid;
+            janode_event.data.moderation = message_data.moderation;
             break;
           }
       }
@@ -1570,6 +1570,7 @@ export type VIDEOROOM_EVENT_PUB_JOINED = {
     audiocodec?: string;
     videocodec?: string;
     simulcast: boolean;
+    avatarJSON?: string // this does not exist within Janode, it is only for Rowan Medcraft (TM) that this is here
     streams?: { // BEN TODO See Pub List Streams
       type: "audio" | "video" | "data",
       mindex: number,
@@ -1625,6 +1626,7 @@ export type VIDEOROOM_PUB_LIST = {
     audiocodec?: string,
     videocodec?: string,
     simulcast?: boolean,
+    avatarJSON?: string // Again, this is not really in Janode only in ZoundsXr
     streams: { //TODO incomplete, different fields depending on type, perhaps should use disciminated union type? 
       type: "audio" | "video" | "data",
       mindex: number,
